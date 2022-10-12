@@ -92,8 +92,12 @@ public class CarService {
         if (car.getId() != null) {
             return repository.findById(car.getId())
                     .map(carToBeUpdated -> {
-                        carToBeUpdated.setDetails(car.getDetails());
-                        carToBeUpdated.setLocation(car.getLocation());
+                        if (car.getDetails() != null)
+                            carToBeUpdated.setDetails(car.getDetails());
+                        if (car.getLocation() != null)
+                            carToBeUpdated.setLocation(car.getLocation());
+                        if (car.getCondition() != null)
+                            carToBeUpdated.setCondition(car.getCondition());
                         return repository.save(carToBeUpdated);
                     }).orElseThrow(CarNotFoundException::new);
         }
@@ -117,7 +121,8 @@ public class CarService {
         /**
          * TODO: Delete the car from the repository.
          */
-
-
+        Optional<Car> optionalCar = repository.findById(id);
+        Car car = optionalCar.orElseThrow(CarNotFoundException::new);
+        repository.deleteById(id);
     }
 }

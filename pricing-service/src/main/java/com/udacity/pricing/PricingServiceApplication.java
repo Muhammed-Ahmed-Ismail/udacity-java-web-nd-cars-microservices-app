@@ -3,6 +3,8 @@ package com.udacity.pricing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+//import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 /**
  * Creates a Spring Boot Application to run the Pricing Service.
